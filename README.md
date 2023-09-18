@@ -26,3 +26,7 @@ typescript
 chakra-ui/react 2.8.1,
 
 Docker/Docker-compose
+
+### git ブランチ戦略
+master,feature/,bugfix/
+上記の3つとする。
