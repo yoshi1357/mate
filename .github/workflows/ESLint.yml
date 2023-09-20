@@ -1,0 +1,14 @@
+name: Lint
+on:
+  push:
+    
+  workflow_dispatch:
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: ci
+        run: npm ci
+      - name: ESLint
+        run: npm run lint

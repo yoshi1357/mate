@@ -20,7 +20,7 @@ styles: {
 });
 
 const App = () => {
-    let title: string = "Hello TypeScript React";
+    const title: string = "Hello TypeScript React";
     return (
         <div id="main">
             <ChakraProvider theme={theme}>
