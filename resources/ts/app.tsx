@@ -21,29 +21,29 @@ const theme = extendTheme({
 const App: FC = () => {
   const title: string = 'Hello TypeScript React'
   return (
-        <div id="main">
-            <ChakraProvider theme={theme}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<TopPage />} />
-                        <Route path="/mypage" element={<MyPage />} />
-                        <Route path="/posts" element={<PostPage />} />
-                    </Routes>
-                    <h1>{title}</h1>
-                    <ul>
-                        <li>
-                            <Link to="/">Top</Link>
-                        </li>
-                        <li>
-                            <Link to="/mypage">My</Link>
-                        </li>
-                        <li>
-                            <Link to="/posts">Post</Link>
-                        </li>
-                    </ul>
-                </BrowserRouter>
-            </ChakraProvider>
-        </div>
+    <div id="main">
+        <ChakraProvider theme={theme}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<TopPage />} />
+                    <Route path="/mypage" element={<MyPage />} />
+                    <Route path="/posts" element={<PostPage />} />
+                </Routes>
+                <h1>{title}</h1>
+                <ul>
+                    <li>
+                        <Link to="/">Top</Link>
+                    </li>
+                    <li>
+                        <Link to="/mypage">My</Link>
+                    </li>
+                    <li>
+                        <Link to="/posts">Post</Link>
+                    </li>
+                </ul>
+            </BrowserRouter>
+        </ChakraProvider>
+    </div>
   )
 }
 
