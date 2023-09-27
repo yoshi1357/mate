@@ -1,4 +1,4 @@
-export type User = {
+export interface User {
   id: number
   name: string
   username: string
@@ -21,5 +21,3 @@ export type User = {
     bs: string
   }
 }
-
-

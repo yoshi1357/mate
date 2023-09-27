@@ -1,10 +1,15 @@
 import { useState, useCallback } from 'react'
 import axios from 'axios'
-import { User } from '../types/api/user'
+import { type User } from '../types/api/user'
 import { useNavigate } from 'react-router-dom'
 import { useMessage } from './useMessage'
 
-export const useAuth = () => {
+interface Type {
+  login: (id: string) => void
+  loading: boolean
+}
+
+export const useAuth = (): Type => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { showMessage } = useMessage()
@@ -15,7 +20,7 @@ export const useAuth = () => {
       axios
         .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((res) => {
-          if (res.data) {
+          if (res.data !== undefined) {
             showMessage({ title: 'ログインしました', status: 'success' })
             navigate('/users')
           } else {

@@ -1,15 +1,15 @@
-import React, { memo,  type FC, useState, ChangeEvent } from "react"
-import { Box, Divider, Flex, Heading, Input, Stack } from "@chakra-ui/react"
-import { PrimaryButton } from "../atoms/button/PrimaryButton"
-import { useAuth } from "../../hooks/useAuth"
+import React, { memo, type FC, useState, type ChangeEvent } from 'react'
+import { Box, Divider, Flex, Heading, Input, Stack } from '@chakra-ui/react'
+import { PrimaryButton } from '../atoms/button/PrimaryButton'
+import { useAuth } from '../../hooks/useAuth'
 
 export const LoginPage: FC = memo(function LoginPage () {
-  const [ userId, setUserId] = useState('')
+  const [userId, setUserId] = useState('')
   const { login, loading } = useAuth()
 
-  const onClick = () => login(userId)
+  const onClick = (): void => { login(userId) }
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setUserId(e.target.value)
   }
 
