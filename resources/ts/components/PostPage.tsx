@@ -1,5 +1,5 @@
-import React from "react";
+import React, { type FC } from 'react'
 
-export const PostPage = () => {
-    return <div>PostPage</div>;
-};
+export const PostPage: FC = () => {
+  return <div>PostPage</div>
+}

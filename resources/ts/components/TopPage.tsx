@@ -1,5 +1,5 @@
-import React from "react";
+import React, { type FC } from 'react'
 
-export const TopPage = () => {
-    return <div>TopPage</div>;
-};
+export const TopPage: FC = () => {
+  return <div>TopPage</div>
+}
