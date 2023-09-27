@@ -1,9 +1,7 @@
 import React, { type FC } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Link } from 'react-router-dom'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-import { Router } from "./router/Router";
-
+import { Router } from './router/Router'
 
 const theme = extendTheme({
   styles: {
@@ -16,7 +14,7 @@ const theme = extendTheme({
   }
 })
 
-function App() {
+const App: FC = () => {
   const title: string = 'Hello TypeScript React'
   return (
     <div id="main">
@@ -50,4 +48,4 @@ function App() {
   )
 }
 
-export default App;
+export default App

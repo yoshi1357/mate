@@ -7,4 +7,3 @@ const user: User = {
   email: '@xxxx'
 }
 
-console.log(user)

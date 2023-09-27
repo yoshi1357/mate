@@ -1,5 +1,5 @@
-import React, { FC, memo } from "react";
+import React, { type FC, memo } from 'react'
 
-export const CompatibilityTestPage: FC = memo(() => {
-    return <div>CompatibilityTestPage</div>;
-});
+export const CompatibilityTestPage: FC = memo(function CompatibilityTestPage () {
+  return <div>CompatibilityTestPage</div>
+})

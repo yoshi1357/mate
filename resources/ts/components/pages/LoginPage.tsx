@@ -1,5 +1,5 @@
-import React, { FC, memo } from "react";
+import React, { type FC, memo } from 'react'
 
-export const LoginPage: FC = memo(() => {
-    return <div>LoginPage</div>;
-});
+export const LoginPage: FC = memo(function LoginPage () {
+  return <div>LoginPage</div>
+})
