@@ -1,7 +1,8 @@
 import React, { type FC } from 'react'
-import { BrowserRouter, Link } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { Router } from './router/Router'
+import { Header } from './components/organisms/layout/Header'
 
 const theme = extendTheme({
   styles: {
@@ -20,28 +21,9 @@ const App: FC = () => {
     <div id="main">
         <ChakraProvider theme={theme}>
             <BrowserRouter>
-                <h1>{title}</h1>
+                <Header />
                 <Router />
-                <ul>
-                    <li>
-                        <Link to="/">Login</Link>
-                    </li>
-                    <li>
-                        <Link to="/users">会員一覧</Link>
-                    </li>
-                    <li>
-                        <Link to="/communities">コミュニティ一覧</Link>
-                    </li>
-                    <li>
-                        <Link to="/matched">マッチング</Link>
-                    </li>
-                    <li>
-                        <Link to="/compatibility_test">相性診断</Link>
-                    </li>
-                    <li>
-                        <Link to="/mypage">マイページ</Link>
-                    </li>
-                </ul>
+                <h1>{title}</h1>
             </BrowserRouter>
         </ChakraProvider>
     </div>

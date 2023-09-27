@@ -1,9 +1,9 @@
 import './bootstrap'
-import { type User } from './types'
+// import { type User } from './types'
 
-const user: User = {
-  id: 1,
-  name: 'chigusa',
-  email: '@xxxx'
-}
+// const user: User = {
+//   id: 1,
+//   name: 'chigusa',
+//   email: '@xxxx'
+// }
 
