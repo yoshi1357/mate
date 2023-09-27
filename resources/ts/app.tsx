@@ -2,10 +2,8 @@ import React, { type FC } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { Router } from "./router/Router";
 
-import { TopPage } from './components/TopPage'
-import { MyPage } from './components/MyPage'
-import { PostPage } from './components/PostPage'
 
 const theme = extendTheme({
   styles: {
@@ -24,21 +22,26 @@ const App: FC = () => {
     <div id="main">
         <ChakraProvider theme={theme}>
             <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<TopPage />} />
-                    <Route path="/mypage" element={<MyPage />} />
-                    <Route path="/posts" element={<PostPage />} />
-                </Routes>
                 <h1>{title}</h1>
+                <Router />
                 <ul>
                     <li>
-                        <Link to="/">Top</Link>
+                        <Link to="/">Login</Link>
                     </li>
                     <li>
-                        <Link to="/mypage">My</Link>
+                        <Link to="/users">会員一覧</Link>
                     </li>
                     <li>
-                        <Link to="/posts">Post</Link>
+                        <Link to="/communities">コミュニティ一覧</Link>
+                    </li>
+                    <li>
+                        <Link to="/matched">マッチング</Link>
+                    </li>
+                    <li>
+                        <Link to="/compatibility_test">相性診断</Link>
+                    </li>
+                    <li>
+                        <Link to="/mypage">マイページ</Link>
                     </li>
                 </ul>
             </BrowserRouter>
