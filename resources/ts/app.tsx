@@ -16,7 +16,7 @@ const theme = extendTheme({
   }
 })
 
-const App: FC = () => {
+function App() {
   const title: string = 'Hello TypeScript React'
   return (
     <div id="main">
@@ -50,6 +50,4 @@ const App: FC = () => {
   )
 }
 
-const container = document.getElementById('app') as HTMLInputElement
-const root = createRoot(container)
-root.render(<App />)
+export default App;
