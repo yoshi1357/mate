@@ -2,7 +2,6 @@ import React, { type FC } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { Router } from './router/Router'
-import { Header } from './components/organisms/layout/Header'
 
 const theme = extendTheme({
   styles: {
@@ -21,7 +20,6 @@ const App: FC = () => {
     <div id="main">
         <ChakraProvider theme={theme}>
             <BrowserRouter>
-                <Header />
                 <Router />
                 <h1>{title}</h1>
             </BrowserRouter>
