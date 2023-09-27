@@ -1,27 +1,26 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { ChakraProvider } from '@chakra-ui/react'
-import { extendTheme } from '@chakra-ui/react'
+import React, { type FC } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 
-import { TopPage } from "./components/TopPage";
-import { MyPage } from "./components/MyPage";
-import { PostPage } from "./components/PostPage";
+import { TopPage } from './components/TopPage'
+import { MyPage } from './components/MyPage'
+import { PostPage } from './components/PostPage'
 
 const theme = extendTheme({
-styles: {
+  styles: {
     global: {
-    body: {
-        backgroundColor: "red.100",
-        color: "red.800"
+      body: {
+        backgroundColor: 'red.100',
+        color: 'red.800'
+      }
     }
-    }
-}
-});
+  }
+})
 
-const App = () => {
-    let title: string = "Hello TypeScript React";
-    return (
+const App: FC = () => {
+  const title: string = 'Hello TypeScript React'
+  return (
         <div id="main">
             <ChakraProvider theme={theme}>
                 <BrowserRouter>
@@ -45,9 +44,9 @@ const App = () => {
                 </BrowserRouter>
             </ChakraProvider>
         </div>
-    );
-};
+  )
+}
 
-const container = document.getElementById("app") as HTMLInputElement;
-const root = createRoot(container);
-root.render(<App />);
+const container = document.getElementById('app') as HTMLInputElement
+const root = createRoot(container)
+root.render(<App />)
