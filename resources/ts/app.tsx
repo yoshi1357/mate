@@ -16,7 +16,7 @@ const theme = extendTheme({
   }
 })
 
-function App(): FC {
+function App(): React.ReactElement | null {
     const title: string = "Hello TypeScript React";
     return (
         <ChakraProvider theme={theme}>
