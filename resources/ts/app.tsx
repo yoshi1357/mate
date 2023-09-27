@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type FC } from 'react'
 import { BrowserRouter, Link } from "react-router-dom";
 import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
@@ -6,18 +6,18 @@ import { Router } from "./router/Router";
 
 
 const theme = extendTheme({
-styles: {
+  styles: {
     global: {
-    body: {
-        backgroundColor: "red.100",
-        color: "red.800"
+      body: {
+        backgroundColor: 'red.100',
+        color: 'red.800'
+      }
     }
-    }
-}
-});
+  }
+})
 
-function App() {
-    let title: string = "Hello TypeScript React";
+function App(): FC {
+    const title: string = "Hello TypeScript React";
     return (
         <ChakraProvider theme={theme}>
             <BrowserRouter>
