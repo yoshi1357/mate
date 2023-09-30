@@ -11,6 +11,9 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "ignorePatterns": [
+        "vite.config.ts"
+    ],
     "plugins": [
         "react"
     ],
