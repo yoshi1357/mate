@@ -15,13 +15,11 @@ const theme = extendTheme({
 })
 
 const App: FC = () => {
-  const title: string = 'Hello TypeScript React'
   return (
     <div id="main">
         <ChakraProvider theme={theme}>
             <BrowserRouter>
                 <Router />
-                <h1>{title}</h1>
             </BrowserRouter>
         </ChakraProvider>
     </div>

@@ -11,8 +11,8 @@ import { HeaderLayout } from '../components/templates/HeaderLayout'
 export const Router: FC = memo(function Router () {
   return (
         <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route element={<HeaderLayout />}>
+            <Route path="/" element={<HeaderLayout />}>
+                <Route index={true} element={<LoginPage />} />
                 <Route path="/users" element={<UserIndexPage />} />
                 <Route path="/communities" element={<CommunityIndexPage />} />
                 <Route path="/matched" element={<MatchedPage />} />

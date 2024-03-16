@@ -18,6 +18,10 @@
         "react"
     ],
     "rules": {
+        "semi": "off",
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/no-misused-promises": "off"
     },
     "settings": {
         "react": {
