@@ -4,16 +4,11 @@ import { Box, Flex, Heading, Link, useDisclosure } from '@chakra-ui/react';
 
 import { MenuIconButton } from '../../atoms/button/MenuIconButton';
 import { MenuDrawer } from '../../molecules/MenuDrawer';
+import { links } from '../../../parts/Links'
 
 export const Header: FC = memo(function Header () {
   const navigation = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const onClickLogin = useCallback(() => navigation('/'), []);
-  const onClickUsers = useCallback(() => navigation('users'), []);
-  const onClickCommunities = useCallback(() => navigation('communities'), []);
-  const onClickMatched = useCallback(() => navigation('matched'), []);
-  const onClickCompatibilityTest = useCallback(() => navigation('compatibility_test'), []);
-  const onClickMypage = useCallback(() => navigation('mypage'), []);
 
   return (
     <>
@@ -29,7 +24,7 @@ export const Header: FC = memo(function Header () {
           <Heading
             as="h1"
             fontSize={{ base: 'md', md: 'lg' }}
-            onClick={onClickUsers}
+            onClick={() => navigation('users')}
           >
             Mate
           </Heading>
@@ -40,36 +35,18 @@ export const Header: FC = memo(function Header () {
           display={{ base: 'none', md: 'flex' }}
           flexGrow={2}
         >
-          <Box pr={4} mr={4}>
-            <Link onClick={onClickLogin}>Login</Link>
-          </Box>
-          <Box pr={4} mr={4}>
-            <Link onClick={onClickUsers}>会員一覧</Link>
-          </Box>
-          <Box pr={4} mr={4}>
-            <Link onClick={onClickCommunities}>コミュニティ一覧</Link>
-          </Box>
-          <Box pr={4} mr={4}>
-            <Link onClick={onClickMatched}>マッチング</Link>
-          </Box>
-          <Box pr={4} mr={4}>
-            <Link onClick={onClickCompatibilityTest}>相性診断</Link>
-          </Box>
-          <Box pr={4} mr={4}>
-            <Link onClick={onClickMypage}>マイページ</Link>
-          </Box>
+          {links.map((link) => (
+            <Box key={link.path} pr={4} mr={4}>
+              <Link onClick={() => navigation(link.path)}>{link.text}</Link>
+            </Box>
+          ))}
         </Flex>
         <MenuIconButton onOpen={onOpen} />
       </Flex>
       <MenuDrawer
         isOpen={isOpen}
         onClose={onClose}
-        onClickLogin={onClickLogin}
-        onClickUsers={onClickUsers}
-        onClickCommunities={onClickCommunities}
-        onClickMatched={onClickMatched}
-        onClickMypage={onClickMypage}
-        onClickCompatibilityTest={onClickCompatibilityTest}
+        links={links}
       />
     </>
   );

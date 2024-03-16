@@ -27,7 +27,10 @@
         "@typescript-eslint/no-confusing-void-expression": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "react/display-name": "off"
+        "react/display-name": "off",
+        "indent": "off",
+        "@typescript-eslint/indent": "off",
+        "no-tabs": "off"
     },
     "settings": {
         "react": {
