@@ -28,7 +28,7 @@ export const MenuDrawer = memo((props: Props): FC => {
       <DrawerContent>
         <DrawerBody p={0} bg="gray.100">
           {links.map((link) => (
-            <Button key={link.path} w="100%" onClick={()=> navigation(link.path)}>
+            <Button key={link.path} w="100%" onClick={() => navigation(link.path)}>
               {link.text}
             </Button>
           ))}
