@@ -25,7 +25,7 @@ export const LoginPage: FC = memo(function LoginPage () {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid }
   } = useForm<FormData>({
     defaultValues: { email: 'Sincere@april.biz', password: 'password' },
     mode: 'onBlur'
@@ -67,15 +67,15 @@ export const LoginPage: FC = memo(function LoginPage () {
                 {...register('password', {
                   required: {
                     value: true,
-                    message: '入力が必須の項目です。',
+                    message: '入力が必須の項目です。'
                   },
                   pattern: {
                     value: /^[A-Za-z]+$/,
-                    message: 'アルファベットのみ入力してください。',
+                    message: 'アルファベットのみ入力してください。'
                   },
                   minLength: {
                     value: 8,
-                    message: '8文字以上入力してください。',
+                    message: '8文字以上入力してください。'
                   }
                 })}
               />

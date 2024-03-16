@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { useMessage } from './useMessage';
 
 interface Type {
-  login: (email: string, password: string) => void;
-  loading: boolean;
+  login: (email: string, password: string) => void
+  loading: boolean
 }
 
 export const useAuth = (): Type => {
@@ -31,7 +31,7 @@ export const useAuth = (): Type => {
         // サーバーからのレスポンスがある場合
         console.error('Status:', e.response.status);
         console.error('Data:', e.response.data);
-        console.error('Message', e.message); 
+        console.error('Message', e.message);
       } else {
         console.error(e)
       }
