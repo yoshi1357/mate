@@ -7,7 +7,7 @@
         "strict": true,         // Enable strict type-checking options
         "skipLibCheck": true,   // Skip type checking of declaration files
         "noImplicitAny": false,  // Bypass raising errors on `any` type
-        "jsx": "react",
+        "jsx": "react-jsx",
         "esModuleInterop": true,
     },
     "include": ["resources/js/**/*", "resources/ts/**/*"] // Frontend paths pattern
