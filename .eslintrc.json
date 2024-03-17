@@ -30,7 +30,9 @@
         "react/display-name": "off",
         "indent": "off",
         "@typescript-eslint/indent": "off",
-        "no-tabs": "off"
+        "no-tabs": "off",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@stylistic/eslint-plugin-js": "off"
     },
     "settings": {
         "react": {

@@ -9,6 +9,7 @@
         "noImplicitAny": false,  // Bypass raising errors on `any` type
         "jsx": "react-jsx",
         "esModuleInterop": true,
+        "lib": [ "es2015", "dom" ],
     },
     "include": ["resources/js/**/*", "resources/ts/**/*"] // Frontend paths pattern
 }
