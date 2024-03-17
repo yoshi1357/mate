@@ -1,4 +1,4 @@
-import { memo, type FC } from 'react';
+import { memo } from 'react';
 import { type Link } from '../../types/parts/link'
 import { useNavigate } from 'react-router-dom';
 import {
@@ -15,7 +15,7 @@ interface Props {
   links: Link[]
 }
 
-export const MenuDrawer = memo((props: Props): FC => {
+export const MenuDrawer = memo((props: Props) => {
   const navigation = useNavigate();
   const {
     isOpen,

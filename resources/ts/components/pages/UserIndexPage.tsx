@@ -1,4 +1,3 @@
-/* eslint-disable multiline-ternary */
 import { type FC, memo, useEffect, useCallback } from 'react'
 import { Center, Spinner, Wrap, WrapItem, useDisclosure } from '@chakra-ui/react';
 
@@ -17,7 +16,7 @@ export const UserIndexPage: FC = memo(function UserIndexPage () {
   }, [getUsers]);
 
   const userClick = useCallback((id: number) => {
-    onSelectedUser({id, users, onOpen})
+    onSelectedUser({ id, users, onOpen })
   }, [onSelectedUser, users, onOpen])
 
   return isLoading ? (

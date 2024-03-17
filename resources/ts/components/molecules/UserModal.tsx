@@ -1,4 +1,4 @@
-import { memo, FC, useCallback } from 'react';
+import { memo, type FC, useCallback } from 'react';
 import {
 	Box,
 	Button,
@@ -13,16 +13,16 @@ import {
 	Stack,
 } from '@chakra-ui/react';
 
-import { User } from '../../types/api/user';
+import { type User } from '../../types/api/user';
 import { UserCard } from '../organisms/user/UserCard';
 
 interface Props {
-	isOpen: boolean;
-	onClose: () => void;
-	user: User | null;
+	isOpen: boolean
+	onClose: () => void
+	user: User | null
 }
 
-export const UserModal: FC<Props> = memo((props) => {
+export const UserModal: FC<Props> = memo((props: Props) => {
 	const { isOpen, onClose, user } = props;
 	const userClick = useCallback((id: number) => {
     console.log(id);

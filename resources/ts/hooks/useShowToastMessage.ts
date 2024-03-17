@@ -10,7 +10,7 @@ interface Props {
     isClosable?: true
 };
 
-export const useShowToastMessage = (): ((props: Props) => void)[] => {
+export const useShowToastMessage = (): Array<(props: Props) => void> => {
   const toast = useToast();
   const showToast = useCallback(
     (props: Props) => {

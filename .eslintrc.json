@@ -32,7 +32,8 @@
         "@typescript-eslint/indent": "off",
         "no-tabs": "off",
         "@typescript-eslint/no-floating-promises": "off",
-        "@stylistic/eslint-plugin-js": "off"
+        "@stylistic/eslint-plugin-js": "off",
+        "multiline-ternary": "off"
     },
     "settings": {
         "react": {
