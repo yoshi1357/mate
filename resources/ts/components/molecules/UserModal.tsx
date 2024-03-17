@@ -15,6 +15,7 @@ import {
 
 import { type User } from '../../types/api/user';
 import { UserCard } from '../organisms/user/UserCard';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
 	isOpen: boolean
@@ -23,10 +24,10 @@ interface Props {
 }
 
 export const UserModal: FC<Props> = memo((props: Props) => {
+	const navigation = useNavigate();
 	const { isOpen, onClose, user } = props;
 	const userClick = useCallback((id: number) => {
-    console.log(id);
-		// 会員詳細ページへの遷移を行う
+		navigation(`${id}`)
   }, [])
 
 	return user ? (
@@ -39,7 +40,7 @@ export const UserModal: FC<Props> = memo((props: Props) => {
 						<ModalBody>
 							<Stack spacing={4} textAlign="center">
 								<Center>
-									<UserCard id={user?.id} name={user?.name} userClick={userClick} />
+									<UserCard id={user?.id} name={user?.name} userClick={() => userClick(user?.id)} />
 								</Center>
 								<Box>
 									住所: {user?.address.city}
