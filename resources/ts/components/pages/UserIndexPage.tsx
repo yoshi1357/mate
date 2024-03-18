@@ -1,10 +1,11 @@
 import { type FC, memo, useEffect, useCallback } from 'react'
-import { Center, Spinner, Wrap, WrapItem, useDisclosure } from '@chakra-ui/react';
+import { Wrap, WrapItem, useDisclosure } from '@chakra-ui/react';
 
 import { UserCard } from '../organisms/user/UserCard'
 import { UserModal } from '../molecules/UserModal';
 import { useGetUsers } from '../../hooks/useGetUsers';
 import { useSelectUser } from '../../hooks/useSelectUser';
+import { LoadingPage } from './LoadingPage';
 
 export const UserIndexPage: FC = memo(function UserIndexPage () {
   const { users, getUsers, isLoading } = useGetUsers();
@@ -20,9 +21,7 @@ export const UserIndexPage: FC = memo(function UserIndexPage () {
   }, [onSelectedUser, users, onOpen])
 
   return isLoading ? (
-    <Center>
-      <Spinner />
-    </Center>
+    <LoadingPage />
   ) : (
     <Wrap p={{ base: 4, md: 6 }}>
       {users.map((user) => (

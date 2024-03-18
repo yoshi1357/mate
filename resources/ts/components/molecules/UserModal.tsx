@@ -16,6 +16,7 @@ import {
 import { type User } from '../../types/api/user';
 import { UserCard } from '../organisms/user/UserCard';
 import { useNavigate } from 'react-router-dom';
+import { DataNotFound } from '../pages/DataNotFound';
 
 interface Props {
 	isOpen: boolean
@@ -62,6 +63,8 @@ export const UserModal: FC<Props> = memo((props: Props) => {
 			</Modal>
 		</>
 	) : (
-		<Center>ユーザ詳細データが存在しません</Center>
+		<DataNotFound>
+			指定されたユーザーが存在しません
+		</DataNotFound>
 	)
 });

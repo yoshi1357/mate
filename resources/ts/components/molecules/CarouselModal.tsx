@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 
 import { PureCarousel } from './PureCarousel';
+import { DataNotFound } from '../pages/DataNotFound';
 
 interface Props {
 	isOpen: boolean
@@ -43,6 +44,8 @@ export const CarouselModal: FC<Props> = memo((props: Props) => {
 			</Modal>
 		</>
 	) : (
-		<Center>画像データが存在しません</Center>
+		<DataNotFound>
+            指定された画像が存在しません
+        </DataNotFound>
 	)
 });

@@ -22,7 +22,6 @@ export const useGetUserById = (): UseGetUserReturn => {
 		try {
 			const { id } = props;
 			setIsLoading(true);
-			console.log(id);
 			const res = await axios.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`);
 			setUser(res.data);
 		} catch (e) {

@@ -8,7 +8,7 @@ import { MatchedPage } from '../components/pages/MatchedPage'
 import { CompatibilityTestPage } from '../components/pages/CompatibilityTestPage'
 import { HeaderLayout } from '../components/templates/HeaderLayout'
 import { NotFound } from '../components/pages/404'
-import { UserDetail } from '../components/pages/UserDetail'
+import { UserDetailPage } from '../components/pages/UserDetailPage'
 
 export const Router: FC = memo(function Router () {
   return (
@@ -17,7 +17,7 @@ export const Router: FC = memo(function Router () {
             <Route element={<HeaderLayout />}>
                 <Route path="/users">
                   <Route index={true} element={<UserIndexPage />} />
-                  <Route path=":id" element={<UserDetail />} />
+                  <Route path=":id" element={<UserDetailPage />} />
                 </Route>
                 <Route path="/communities" element={<CommunityIndexPage />} />
                 <Route path="/matched" element={<MatchedPage />} />
