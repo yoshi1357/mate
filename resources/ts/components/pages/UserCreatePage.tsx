@@ -7,9 +7,9 @@ import { memo, type FC, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 
 import { PrimaryButton } from '../atoms/button/PrimaryButton';
-import { useCreateUser } from '../../hooks/useCreateUser';
+// import { useCreateUser } from '../../hooks/useCreateUser';
 import { type CreateUserForm } from '../../types/api/createUserForm';
-import { LoadingPage } from './LoadingPage';
+// import { LoadingPage } from './LoadingPage';
 import { NameInput } from '../molecules/form/user/NameInput';
 import { PasswordInput } from '../molecules/form/user/PasswordInput';
 import { ConfirmPasswordInput } from '../molecules/form/user/ConfirmPasswordInput';
@@ -29,7 +29,7 @@ import { workSelects } from '../../parts/WorkSelects';
 // https://qiita.com/pkino/items/79a18a0bd518bf2660bd
 // 上記サイトを参考に追加の処理が必要
 export const UserCreatePage: FC = memo(() => {
-    const { createUser, isLoading, message } = useCreateUser();
+    // const { createUser, isLoading, message } = useCreateUser();
 		const [photos, setPhotos] = useState<File[]>([]);
 
 		const methods = useForm<CreateUserForm>({
@@ -45,11 +45,11 @@ export const UserCreatePage: FC = memo(() => {
 			console.log(userCreateFormData);
 		});
 
-		if (isLoading) {
-			return (
-				<LoadingPage />
-			)
-		}
+		// if (isLoading) {
+		// 	return (
+		// 		<LoadingPage />
+		// 	)
+		// }
 
     return (
         <VStack bg='white' p={{ base: 4, md: 6 }} borderRadius='md'>

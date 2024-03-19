@@ -36,4 +36,3 @@ export const ConfirmPasswordInput = memo(() => {
 		</FormControl>
 	);
 });
-

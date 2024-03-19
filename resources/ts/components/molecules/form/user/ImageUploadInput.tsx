@@ -17,7 +17,7 @@ interface PhotosUploadProps {
 }
 
 export const PhotosUpload: React.FC<PhotosUploadProps> = ({ photos, setPhotos }) => {
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (!event.target.files) return;
 
     const newFiles = Array.from(event.target.files);
@@ -25,7 +25,7 @@ export const PhotosUpload: React.FC<PhotosUploadProps> = ({ photos, setPhotos })
     setPhotos(allFiles);
   };
 
-  const handleRemovePhoto = (index: number) => {
+  const handleRemovePhoto = (index: number): void => {
     const newPhotos = photos.filter((_, i) => i !== index);
     setPhotos(newPhotos);
   };

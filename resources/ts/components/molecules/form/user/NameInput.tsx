@@ -1,4 +1,4 @@
-import { Badge, FormControl, FormErrorMessage, FormLabel, Input, Spacer, VStack } from '@chakra-ui/react';
+import { Badge, FormControl, FormErrorMessage, FormLabel, Input, VStack } from '@chakra-ui/react';
 import { memo } from 'react';
 import { useFormContext } from 'react-hook-form';
 export const NameInput = memo(() => {
@@ -32,4 +32,3 @@ export const NameInput = memo(() => {
 		</FormControl>
 	)
 })
-
