@@ -9,10 +9,14 @@ import {
   Stack,
   Flex,
   Divider,
-  FormErrorMessage
+  FormErrorMessage,
+  Center,
+  Button,
 } from '@chakra-ui/react'
+
 import { PrimaryButton } from '../atoms/button/PrimaryButton'
 import { useAuth } from '../../hooks/useAuth'
+import { Link, useNavigate } from 'react-router-dom';
 
 interface FormData {
   email: string
@@ -20,7 +24,7 @@ interface FormData {
 }
 
 export const LoginPage: FC = memo(function LoginPage () {
-  // const [userId, setUserId] = useState('')
+  const navigate = useNavigate();
   const { login, loading } = useAuth()
   const {
     register,
@@ -83,6 +87,11 @@ export const LoginPage: FC = memo(function LoginPage () {
                 {errors.password?.message}
               </FormErrorMessage>
             </FormControl>
+            <Center>
+              <Link to={'users/create'}>
+                新規登録
+              </Link>
+            </Center>
             <PrimaryButton type="submit" disabled={!isValid} loading={loading} onClick={onSubmit}>
               ログイン
             </PrimaryButton>
