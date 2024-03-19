@@ -7,7 +7,7 @@ export const HeaderLayout: FC = memo(function HeaderLayout () {
   return (
     <>
         <Header />
-        <Container h='100vh' w='100vw'>
+        <Container h='100vh' w='100vw' py={4}>
           <Outlet />
         </Container>
     </>
