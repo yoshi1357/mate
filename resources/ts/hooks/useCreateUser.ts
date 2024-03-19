@@ -19,6 +19,23 @@ export const useCreateUser = (): useCreateUserReturn => {
 
 	const createUser = useCallback(async (props: CreateUserForm) => {
 		// const { name } = props;
+		const {
+			name,
+			email,
+			image,
+			password,
+			password_digest,
+			content,
+			age,
+			sex,
+			blood_type,
+			height,
+			body_shape,
+			residence,
+			birth_place,
+			holiday,
+			work,
+		} = props;
 		setIsLoading(true)
 		try {
 			const res = await axios.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`);

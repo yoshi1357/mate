@@ -31,7 +31,7 @@ export const UserModal: FC<Props> = memo((props: Props) => {
 		navigation(`${id}`)
   }, [])
 
-	return user ? (
+	return (
 		<>
 			<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
@@ -39,20 +39,28 @@ export const UserModal: FC<Props> = memo((props: Props) => {
 					<ModalHeader>ユーザー詳細</ModalHeader>
 					<ModalCloseButton />
 						<ModalBody>
-							<Stack spacing={4} textAlign="center">
-								<Center>
-									<UserCard id={user?.id} name={user?.name} userClick={() => userClick(user?.id)} />
-								</Center>
-								<Box>
-									住所: {user?.address.city}
-								</Box>
-								<Box>
-									メールアドレス: {user?.email}
-								</Box>
-								<Box>
-									電話番号: {user?.phone}
-								</Box>
-							</Stack>
+							{
+								user ? (
+									<Stack spacing={4} textAlign="center">
+										<Center>
+											<UserCard id={user?.id} name={user?.name} userClick={() => userClick(user?.id)} />
+										</Center>
+										<Box>
+											住所: {user?.address.city}
+										</Box>
+										<Box>
+											メールアドレス: {user?.email}
+										</Box>
+										<Box>
+											電話番号: {user?.phone}
+										</Box>
+									</Stack>
+								) : (
+									<DataNotFound>
+										指定されたユーザーが存在しません
+									</DataNotFound>
+								)
+							}
 						</ModalBody>
 						<ModalFooter>
 							<Button colorScheme="blue" mr={3} onClick={onClose}>
@@ -62,9 +70,5 @@ export const UserModal: FC<Props> = memo((props: Props) => {
 				</ModalContent>
 			</Modal>
 		</>
-	) : (
-		<DataNotFound>
-			指定されたユーザーが存在しません
-		</DataNotFound>
 	)
 });
