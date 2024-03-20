@@ -14,7 +14,6 @@ export const ConfirmPasswordInput = memo(() => {
 			: 'パスワードが一致しません'
 		}
 	}
-	console.log(errors.confirmPassword?.message);
 
 	return (
 		<FormControl isInvalid={Boolean(errors.confirmPassword)}>

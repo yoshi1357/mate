@@ -28,7 +28,7 @@ export const NumInput = memo((props: Props) => {
 	} = useFormContext();
 	const { labelText, label, min, max, required = false } = props
 	return (
-		<FormControl isInvalid={Boolean(errors.label)}>
+		<FormControl isInvalid={Boolean(errors[label])}>
 			<VStack>
 				<FormLabel htmlFor={label}>
 					{ required ? (
@@ -65,7 +65,7 @@ export const NumInput = memo((props: Props) => {
 					</NumberInputStepper>
 				</NumberInput>
 				<FormErrorMessage>
-					{errors.label?.message}
+					{errors[label]?.message}
 				</FormErrorMessage>
 			</VStack>
 		</FormControl>

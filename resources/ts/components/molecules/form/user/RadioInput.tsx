@@ -18,7 +18,7 @@ export const RadioInput = memo((props: Props) => {
 	const { radioList, labelText, label, required = false } = props;
 
 	return (
-		<FormControl as="fieldset" isInvalid={Boolean(errors.label)}>
+		<FormControl as="fieldset" isInvalid={Boolean(errors[label])}>
 			<VStack>
 				<FormLabel htmlFor={label}>
 					{ required ? (
@@ -36,7 +36,7 @@ export const RadioInput = memo((props: Props) => {
 					</HStack>
 				</RadioGroup>
 				<FormErrorMessage>
-					{errors.label?.message}
+					{errors[label]?.message}
 				</FormErrorMessage>
 			</VStack>
 		</FormControl>
