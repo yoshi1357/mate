@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\ApiTestProductController;
+use App\Http\Controllers\UserController;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::apiResource('test_products', ApiTestProductController::class);
 });
+
+Route::post("login",[UserController::class,'index']);
