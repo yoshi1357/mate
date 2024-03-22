@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { FormControl, FormLabel, Select, FormErrorMessage, VStack, Badge } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
 
@@ -19,7 +19,7 @@ export const SelectBoxInput = memo((props: Props) => {
 	const { selectList, labelText, label, required } = props;
 
 	return (
-		<FormControl isInvalid={Boolean(errors.bodyShape)}>
+		<FormControl isInvalid={Boolean(errors[label])}>
 			<VStack>
 				<FormLabel htmlFor={label}>
 					{ required ? (
@@ -35,7 +35,7 @@ export const SelectBoxInput = memo((props: Props) => {
 					))}
 				</Select>
 				<FormErrorMessage>
-					{errors.bodyShape?.message}
+					{errors[label]?.message}
 				</FormErrorMessage>
 			</VStack>
 		</FormControl>

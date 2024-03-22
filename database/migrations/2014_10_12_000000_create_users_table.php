@@ -15,9 +15,24 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('image');
+            $table->string('remember_digest')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->string('password_digest');
+            $table->text('content');
+            $table->integer('age');
+            $table->integer('sex');
+            $table->integer('blood_type');
+            $table->integer('height');
+            $table->integer('body_shape');
+            $table->integer('residence');
+            $table->integer('birth_place');
+            $table->integer('holiday');
+            $table->integer('work');
+            $table->boolean('admin')->default(false);
+            $table->boolean('activated')->default(false);
+            $table->string('activation_digest')->nullable();
+            $table->timestamp('activated_at')->nullable();
             $table->timestamps();
         });
     }

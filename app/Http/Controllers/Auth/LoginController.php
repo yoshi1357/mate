@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 
 final class LoginController extends Controller
 {
@@ -26,7 +27,7 @@ final class LoginController extends Controller
     public function __invoke(LoginRequest $request): JsonResponse
     {
         $credentials = $request->only(['email', 'password']);
-
+        
         if ($this->auth->guard()->attempt($credentials)) {
             $request->session()->regenerate();
 

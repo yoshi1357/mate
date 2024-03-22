@@ -17,15 +17,13 @@ export const useAuth = (): Type => {
   const login = useCallback(async (email: string, password: string) => {
     setLoading(true);
     try {
-      const res = await axios.get<User>('https://jsonplaceholder.typicode.com/users/1');
-      // テスト用
-      // res.data.email = 'Sincere@april.biz'; // 実際の開発ではレスポンスのデータを直接変更するのは避けるべきです
-      if (email === res.data.email && password === 'password') {
-        navigate('/users');
-        showMessage({ title: 'ログインしました', status: 'success' });
-      } else {
-        showMessage({ title: 'ユーザーが見つかりません', status: 'error' });
-      }
+      const response = await axios.post<User>('http://localhost:50080/login', {
+          email,
+          password,
+      }, { withCredentials: true });
+      console.log(response.data);
+      navigate('/users');
+      showMessage({ title: 'ログインしました', status: 'success' });
     } catch (e) {
       if (axios.isAxiosError(e) && e.response) {
         // サーバーからのレスポンスがある場合
