@@ -31,7 +31,7 @@ export const RadioInput = memo((props: Props) => {
 				<RadioGroup>
 					<HStack spacing={4}>
 						{radioList.map((radio) => (
-							<Radio key={radio.id} {...register(label, { required: radio.required })} value={radio.value}>{radio.label}</Radio>
+							<Radio key={radio.value} {...register(label, { required: radio.required })} value={radio.value}>{radio.label}</Radio>
 						))}
 					</HStack>
 				</RadioGroup>

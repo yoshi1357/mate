@@ -31,7 +31,7 @@ export const SelectBoxInput = memo((props: Props) => {
 				</FormLabel>
 				<Select id={label} placeholder={`${labelText}を選択してください`} {...register(label, { required })}>
 					{selectList.map((select) => (
-						<option key={select.id} value={select.value}>{select.label}</option>
+						<option key={select.value} value={select.value}>{select.label}</option>
 					))}
 				</Select>
 				<FormErrorMessage>
