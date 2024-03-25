@@ -13,6 +13,8 @@ interface Props {
   isOpen: boolean
   onClose: () => void
   links: Link[]
+  isLogin: boolean
+  doLogout: () => void
 }
 
 export const MenuDrawer = memo((props: Props) => {
@@ -20,7 +22,9 @@ export const MenuDrawer = memo((props: Props) => {
   const {
     isOpen,
     onClose,
-    links
+    links,
+    isLogin,
+    doLogout
   } = props;
   return (
     <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
@@ -32,6 +36,11 @@ export const MenuDrawer = memo((props: Props) => {
               {link.text}
             </Button>
           ))}
+          {isLogin && (
+            <Button w="100%" onClick={doLogout}>
+              ログアウト
+            </Button>
+          )}
         </DrawerBody>
       </DrawerContent>
     </Drawer>

@@ -18,7 +18,7 @@ export const useGetUsers = (): UseGetUsersReturn => {
     try {
       setIsLoading(true);
 
-      const url = 'https://jsonplaceholder.typicode.com/users';
+      const url = `${import.meta.env.VITE_API_BASE_URI}/users`;
       const res = await axios.get<User[]>(url);
       setUsers(res.data);
     } catch (e) {

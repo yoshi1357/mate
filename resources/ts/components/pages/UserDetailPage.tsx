@@ -45,13 +45,10 @@ export const UserDetailPage = memo(() => {
 						メールアドレス: {user?.email}
 					</Box>
 					<Box>
-						住所: {user?.address.city}
+						年齢: {user?.age}
 					</Box>
 					<Box>
-						電話番号: {user?.phone}
-					</Box>
-					<Box>
-						会社: {user?.company.name}
+						身長: {user?.height}
 					</Box>
 				</Stack>
 			</Center>

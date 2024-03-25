@@ -31,8 +31,17 @@ final class LoginController extends Controller
         if ($this->auth->guard()->attempt($credentials)) {
             $request->session()->regenerate();
 
+            // ログイン成功時に、ユーザー情報を取得
+            $user = $this->auth->guard()->user();
+
+            // ユーザー情報を含むレスポンスを返す
             return new JsonResponse([
-                'message' => 'Authenticated.',
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'admin' => $user->admin,
+                ],
             ]);
         }
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/me', MeController::class);
+    Route::apiResource('users', UserController::class);
 });
 
-Route::apiResource('users', UserController::class);
 Route::get('/user_form_data_provide', [ UserFormDataProvideController::class ,'index' ]);

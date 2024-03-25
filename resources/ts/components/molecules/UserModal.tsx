@@ -46,13 +46,13 @@ export const UserModal: FC<Props> = memo((props: Props) => {
 											<UserCard id={user?.id} name={user?.name} userClick={() => userClick(user?.id)} />
 										</Center>
 										<Box>
-											住所: {user?.address.city}
-										</Box>
-										<Box>
 											メールアドレス: {user?.email}
 										</Box>
 										<Box>
-											電話番号: {user?.phone}
+											年齢: {user?.age}
+										</Box>
+										<Box>
+											身長: {user?.height}
 										</Box>
 									</Stack>
 								) : (

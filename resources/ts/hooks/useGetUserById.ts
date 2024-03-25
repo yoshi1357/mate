@@ -22,7 +22,7 @@ export const useGetUserById = (): UseGetUserReturn => {
 		try {
 			const { id } = props;
 			setIsLoading(true);
-			const res = await axios.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`);
+			const res = await axios.get<User>(`${import.meta.env.VITE_API_BASE_URI}/users/${id}`);
 			setUser(res.data);
 		} catch (e) {
 			if (axios.isAxiosError(e) && e.response) {

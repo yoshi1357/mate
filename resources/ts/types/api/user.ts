@@ -1,23 +1,25 @@
 export interface User {
   id: number
   name: string
-  username: string
   email: string
-  address: {
-    street: string
-    suite: string
-    city: string
-    zipcode: string
-    geo: {
-      lat: string
-      lng: string
-    }
-  }
-  phone: string
-  website: string
-  company: {
-    name: string
-    catchPhrase: string
-    bs: string
-  }
+  image: string
+  remember_digest?: string | null
+  password: string
+  password_digest: string
+  content: string
+  age: number
+  sex: number
+  blood_type: number
+  height: number
+  body_shape: number
+  residence: number
+  birth_place: number
+  holiday: number
+  work: number
+  admin: number
+  activated: boolean
+  activation_digest?: string | null
+  activated_at?: Date | null
+  created_at?: Date
+  updated_at?: Date
 }

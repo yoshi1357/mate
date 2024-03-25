@@ -1,4 +1,4 @@
-import React, { memo, type FC } from 'react'
+import React, { memo, type FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import {
   Heading,
@@ -13,6 +13,7 @@ import {
   Center,
   Button,
 } from '@chakra-ui/react'
+import { useCookies } from 'react-cookie'
 
 import { PrimaryButton } from '../atoms/button/PrimaryButton'
 import { useAuth } from '../../hooks/useAuth'
@@ -24,18 +25,25 @@ interface FormData {
 }
 
 export const LoginPage: FC = memo(function LoginPage () {
-  const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(['']);
   const { login, loading } = useAuth()
   const {
     register,
     handleSubmit,
     formState: { errors, isValid }
   } = useForm<FormData>({
-    defaultValues: { email: 'Sincere@april.biz', password: 'password' },
+    defaultValues: { email: 'john.doe@example.com', password: 'password' },
     mode: 'onBlur'
   })
 
   const onSubmit = handleSubmit((data) => { login(data.email, data.password) })
+
+  useEffect(() => {
+    // 認証情報がセットされていなければ一般ユーザーとしてセットする
+    if (!cookies['AUTHORITY']) {
+      setCookie('AUTHORITY', import.meta.env.VITE_GENERAL);
+    }
+  }, [])
 
   return (
     <Flex align="center" justify="center" height="100vh">
