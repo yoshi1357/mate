@@ -16,20 +16,20 @@ export const ConfirmPasswordInput = memo(() => {
 	}
 
 	return (
-		<FormControl isInvalid={Boolean(errors.confirmPassword)}>
+		<FormControl isInvalid={Boolean(errors.password_digest)}>
 			<VStack>
-				<FormLabel htmlFor="confirmPassword">
+				<FormLabel htmlFor="password_digest">
 					<Badge colorScheme='red' mr={2}>必須</Badge>
 					確認用パスワード
 				</FormLabel>
 				<Input
-					id="confirmPassword"
+					id="password_digest"
 					type="password"
 					placeholder='password'
-					{...register('confirmPassword', passwordValidationOption)}
+					{...register('password_digest', passwordValidationOption)}
 				/>
 				<FormErrorMessage>
-					{errors.confirmPassword?.message}
+					{errors.password_digest?.message}
 				</FormErrorMessage>
 			</VStack>
 		</FormControl>

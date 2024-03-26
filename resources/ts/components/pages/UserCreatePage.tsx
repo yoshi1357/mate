@@ -24,7 +24,7 @@ import { useUserFormDateProvide } from '../../hooks/useUserFormDateProvide';
 // https://qiita.com/pkino/items/79a18a0bd518bf2660bd
 // 上記サイトを参考に追加の処理が必要
 export const UserCreatePage: FC = memo(() => {
-    const { createUser, isLoading: isCreatingUser, message } = useCreateUser();
+    const { createUser, isLoading: isCreatingUser } = useCreateUser();
 	const { getUserFormDateProvide, userFormDateProvide, isLoading: isLoadingUserFormDataProvide } = useUserFormDateProvide();
 	const [photos, setPhotos] = useState<File[]>([]);
 	const methods = useForm<CreateUserForm>({
@@ -36,10 +36,12 @@ export const UserCreatePage: FC = memo(() => {
 	}, [getUserFormDateProvide]);
 	const onSubmit = methods.handleSubmit((userCreateFormData) => {
 		// 画像データを追加
-		photos.forEach((photoData) => {
-			userCreateFormData.image = { name: photoData.name, data: photoData };
-		});
+		// photos.forEach((photoData) => {
+		// 	userCreateFormData.image = 'sample.jpg';
+		// });
+		userCreateFormData.image = 'sample.jpg';
 		console.log(userCreateFormData);
+		createUser(userCreateFormData);
 	});
 
 	if (isLoadingUserFormDataProvide || isCreatingUser) {
@@ -69,17 +71,17 @@ export const UserCreatePage: FC = memo(() => {
 						{/* 性別 */}
 						<RadioInput radioList={userFormDateProvide.sex_radios} labelText='性別' label='sex' required={true} />
 						{/* 血液型 */}
-						<RadioInput radioList={userFormDateProvide.blood_type_radios} labelText='血液型' label='bloodType' required={false} />
+						<RadioInput radioList={userFormDateProvide.blood_type_radios} labelText='血液型' label='blood_type' required={false} />
 						{/* 年齢 */}
 						<NumInput label="age" labelText='年齢' min={18} max={100} required={true} />
 						{/* 身長 */}
 						<NumInput label="height" labelText='身長(cm)' min={100} max={200} required={true} />
 						{/* 体型 */}
-						<SelectBoxInput selectList={userFormDateProvide.body_shape_selects} labelText='体型' label='bodyShape' required={false} />
+						<SelectBoxInput selectList={userFormDateProvide.body_shape_selects} labelText='体型' label='body_shape' required={false} />
 						{/* 居住地 */}
 						<SelectBoxInput selectList={userFormDateProvide.residence_selects} labelText='居住地' label='residence' required='入力が必須の項目です。' />
 						{/* 出身地 */}
-						<SelectBoxInput selectList={userFormDateProvide.residence_selects} labelText='出身地' label='birthPlace' required='入力が必須の項目です。' />
+						<SelectBoxInput selectList={userFormDateProvide.residence_selects} labelText='出身地' label='birth_place' required='入力が必須の項目です。' />
 						{/* 休日 */}
 						<SelectBoxInput selectList={userFormDateProvide.holiday_selects} labelText='休み' label='holiday' required='入力が必須の項目です。' />
 						{/* 職業 */}

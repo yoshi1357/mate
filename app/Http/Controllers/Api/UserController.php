@@ -27,7 +27,17 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return response()->json($user);
+
+        $userData = $user->toArray();
+        $userData['sex'] = $user->display_sex;
+        $userData['blood_type'] = $user->display_blood_type;
+        $userData['body_shape'] = $user->display_body_shape;
+        $userData['residence'] = $user->display_residence;
+        $userData['birth_place'] = $user->display_birth_place;
+        $userData['holiday'] = $user->display_holiday;
+        $userData['work'] = $user->display_work;
+
+        return response()->json($userData);
     }
 
     // ユーザー情報を更新

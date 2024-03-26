@@ -42,13 +42,31 @@ export const UserDetailPage = memo(() => {
 					<UserCard id={user.id} name={user.name} userClick={userClick} />
 					<CarouselModal isOpen={isOpen} onClose={onClose} images={['https://picsum.photos/200', 'https://picsum.photos/200']} />
 					<Box>
-						メールアドレス: {user?.email}
+						{user?.content}
 					</Box>
 					<Box>
 						年齢: {user?.age}
 					</Box>
 					<Box>
 						身長: {user?.height}
+					</Box>
+					<Box>
+						血液型: {user?.blood_type}
+					</Box>
+					<Box>
+						体型: {user?.body_shape}
+					</Box>
+					<Box>
+						居住地: {user?.residence}
+					</Box>
+					<Box>
+						出身地: {user?.birth_place}
+					</Box>
+					<Box>
+						仕事: {user?.work}
+					</Box>
+					<Box>
+						休み: {user?.holiday}
 					</Box>
 				</Stack>
 			</Center>
