@@ -7,13 +7,14 @@ import { MenuIconButton } from '../../atoms/button/MenuIconButton';
 import { MenuDrawer } from '../../molecules/MenuDrawer';
 import { links } from '../../../parts/Links'
 import { useLogout } from '../../../hooks/useLogout'
+import { AUTHORITY, GENERAL } from '../../../constants/setting'
 
 export const Header: FC = memo(function Header () {
-  const [cookies] = useCookies([import.meta.env.VITE_AUTHORITY]);
+  const [cookies] = useCookies([AUTHORITY]);
   const navigation = useNavigate();
   const { logout } = useLogout();
-  const isLogin = cookies[import.meta.env.VITE_AUTHORITY]
-    ? cookies[import.meta.env.VITE_AUTHORITY] !== import.meta.env.VITE_GENERAL
+  const isLogin = cookies[AUTHORITY]
+    ? cookies[AUTHORITY] !== GENERAL
     : false
   const { isOpen, onOpen, onClose } = useDisclosure();
   const onClickLogout = useCallback(() => {

@@ -5,7 +5,7 @@ import { useCookies } from 'react-cookie'
 
 import { type User } from '../types/api/user';
 import { useMessage } from './useMessage';
-import { MAX_AGE } from '../constants/setting';
+import { MAX_AGE, ADMIN, LOGIN, AUTHORITY } from '../constants/setting';
 
 interface Type {
   login: (email: string, password: string) => void
@@ -31,9 +31,9 @@ export const useAuth = (): Type => {
       }, { withCredentials: true });
       console.log(response.data);
       if (response.data.user.admin === Number(import.meta.env.VITE_USER_ADMIN)) {
-        setCookie(import.meta.env.VITE_AUTHORITY, import.meta.env.VITE_ADMIN, { maxAge: MAX_AGE })
+        setCookie(AUTHORITY, ADMIN, { maxAge: MAX_AGE })
       } else {
-        setCookie(import.meta.env.VITE_AUTHORITY, import.meta.env.VITE_LOGIN)
+        setCookie(AUTHORITY, LOGIN, { maxAge: MAX_AGE })
       }
       navigate('/users');
       showMessage({ title: 'ログインしました', status: 'success' });

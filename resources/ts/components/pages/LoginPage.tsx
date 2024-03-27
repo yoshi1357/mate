@@ -11,13 +11,13 @@ import {
   Divider,
   FormErrorMessage,
   Center,
-  Button,
 } from '@chakra-ui/react'
 import { useCookies } from 'react-cookie'
 
 import { PrimaryButton } from '../atoms/button/PrimaryButton'
 import { useAuth } from '../../hooks/useAuth'
 import { Link, useNavigate } from 'react-router-dom';
+import { AUTHORITY, GENERAL } from '../../constants/setting'
 
 interface FormData {
   email: string
@@ -40,8 +40,8 @@ export const LoginPage: FC = memo(function LoginPage () {
 
   useEffect(() => {
     // 認証情報がセットされていなければ一般ユーザーとしてセットする
-    if (!cookies[import.meta.env.VITE_AUTHORITY]) {
-      setCookie(import.meta.env.VITE_AUTHORITY, import.meta.env.VITE_GENERAL);
+    if (!cookies[AUTHORITY]) {
+      setCookie(AUTHORITY, GENERAL);
     }
   }, [])
 

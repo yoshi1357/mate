@@ -4,13 +4,14 @@ import { type User } from '../types/api/user';
 import { useNavigate } from 'react-router-dom';
 import { useMessage } from './useMessage';
 import { useCookies } from 'react-cookie'
+import { AUTHORITY } from '../constants/setting';
 
 interface ReturnUseLogout {
     logout: () => Promise<void>
 }
 
 export const useLogout = (): ReturnUseLogout => {
-    const [cookies, setCookie, removeCookie] = useCookies([import.meta.env.VITE_AUTHORITY]);
+    const [cookies, setCookie, removeCookie] = useCookies([AUTHORITY]);
     const navigate = useNavigate();
     const { showMessage } = useMessage();
 
@@ -19,7 +20,7 @@ export const useLogout = (): ReturnUseLogout => {
         const response = await axios.post(`${import.meta.env.VITE_WEB_BASE_URI}/logout`, {},
         { withCredentials: true });
         console.log(response.data);
-        removeCookie(import.meta.env.VITE_AUTHORITY)
+        removeCookie(AUTHORITY)
         navigate('/');
         showMessage({ title: 'ログアウトしました', status: 'success' });
     } catch (e) {
