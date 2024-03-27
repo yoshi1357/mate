@@ -13,7 +13,7 @@ export const Header: FC = memo(function Header () {
   const navigation = useNavigate();
   const { logout } = useLogout();
   const isLogin = cookies[import.meta.env.VITE_AUTHORITY]
-    ? cookies[import.meta.env.VITE_AUTHORITY] !== import.meta.env.VITE_GENERAL 
+    ? cookies[import.meta.env.VITE_AUTHORITY] !== import.meta.env.VITE_GENERAL
     : false
   const { isOpen, onOpen, onClose } = useDisclosure();
   const onClickLogout = useCallback(() => {

@@ -6,7 +6,7 @@ export const GeneralLayout = memo(() => {
     const [cookies] = useCookies([import.meta.env.VITE_AUTHORITY]);
     const navigate = useNavigate();
     const isLogin = cookies[import.meta.env.VITE_AUTHORITY]
-    ? cookies[import.meta.env.VITE_AUTHORITY] !== import.meta.env.VITE_GENERAL 
+    ? cookies[import.meta.env.VITE_AUTHORITY] !== import.meta.env.VITE_GENERAL
     : false;
 
     useEffect(() => {

@@ -16,7 +16,7 @@ export const useLogout = (): ReturnUseLogout => {
 
     const logout = useCallback(async () => {
     try {
-        const response = await axios.post(`${import.meta.env.VITE_WEB_BASE_URI}/logout`, {}, 
+        const response = await axios.post(`${import.meta.env.VITE_WEB_BASE_URI}/logout`, {},
         { withCredentials: true });
         console.log(response.data);
         removeCookie(import.meta.env.VITE_AUTHORITY)
