@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 
 class CheckLoginUser
 {
@@ -17,12 +18,13 @@ class CheckLoginUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
-        $request_user_id = $request->route('user_id');
-        // ユーザー自身または、管理者ユーザーのみ実行が可能
-        if ($user->id == $request_user_id || $user->admin == User::ADMIN) {
+        $isAdmin = Gate::allows('isAdmin');
+        $isSameUser = Gate::allows('isSameUser', $request);
+        // ユーザー自身のみ実行が可能
+        if ($isAdmin || $isSameUser) {
             return $next($request);
         }
         return response()->json(['message' => 'Unauthorized'], 403);
     }
+
 }
