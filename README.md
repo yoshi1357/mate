@@ -1,32 +1,30 @@
 # mate
+マッチングアプリです。
+お相手の情報を見て、マッチングした相手とチャットができます。
+また、趣味でつながるためにコミュニティや相性のいい相手を診断するためのお相手のレコメンド機能などがあります。
 
-### 使用技術
-Laravel 10.23.1
+## 技術的な特徴
+- SPAになっています
+- テストにGithub Actionsを利用しています
+- サービス、リポジトリパターンになっています
 
-PHP 8.2.10
+## 使用技術
+- Laravel
+- PHP
+- Composer
+- MariaDB
+- Redis
+- PHPUnit
+- react
+- react-dom
+- react-router-dom
+- vite
+- typescript
+- chakra-ui/react
+- Docker/Docker-compose
 
-Composer 2.6.3
+## インフラ構成図
 
-MariaDB 10.11.5
+## 機能一覧
 
-Redis 7.2.1
-
-PHPUnit
-
-react 18.2.0
-
-react-dom 18.2.0
-
-react-router-dom 6.16.0
-
-vite 4.0.0
-
-typescript
-
-chakra-ui/react 2.8.1,
-
-Docker/Docker-compose
-
-### git ブランチ戦略
-master,feature/,bugfix/
-上記の3つとする。
+## テスト
