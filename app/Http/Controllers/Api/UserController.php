@@ -6,13 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Image;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+
 
 class UserController extends Controller
 {
     // ユーザー一覧を取得
     public function index()
     {
-        $users = User::all();
+        $users = User::with('images:file_name,user_id')->get();
         return response()->json($users);
     }
 
@@ -20,13 +24,38 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::create($request->all());
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $file_name = $image->getClientOriginalName();
+                $path = $image->store('public/images');
+                $url = Storage::url($path);
+
+                Image::create([
+                    'file_name' => $file_name,
+                    'path' => $url,
+                    'user_id' => $user->id
+                ]);
+            }
+        } else {
+            $file_name = Image::DEFAULT_FILE_NAME;
+            $url = Image::DEFAULT_FILE_PATH . Image::DEFAULT_FILE_NAME;
+            
+            Image::create([
+                'file_name' => $file_name,
+                'path' => $url,
+                'user_id' => $user->id
+            ]);
+        }
         return response()->json($user, Response::HTTP_CREATED);
     }
 
     // 特定のユーザーを表示
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with(['images' => function ($query) {
+            $query->select('user_id', 'file_name');
+        }])->findOrFail($id);
 
         $userData = $user->toArray();
         $userData['sex'] = $user->display_sex;

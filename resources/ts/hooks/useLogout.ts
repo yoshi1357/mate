@@ -19,7 +19,6 @@ export const useLogout = (): ReturnUseLogout => {
     try {
         const response = await axios.post(`${import.meta.env.VITE_WEB_BASE_URI}/logout`, {},
         { withCredentials: true });
-        console.log(response.data);
         removeCookie(AUTHORITY)
         navigate('/');
         showMessage({ title: 'ログアウトしました', status: 'success' });

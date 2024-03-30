@@ -12,3 +12,6 @@ export const MAX_AGE: number = 60 * 60 * 2;
 // Userに関する定数
 export const LOGIN_USER_NUMBER: number = 0
 export const ADMIN_USER_NUMBER: number = 1
+
+// 画像に関する定数
+export const DISPLAY_IMAGE_URL: string = `${import.meta.env.VITE_WEB_BASE_URI}/storage/images`;

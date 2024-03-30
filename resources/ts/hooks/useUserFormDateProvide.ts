@@ -22,11 +22,9 @@ export const useUserFormDateProvide = (): UseUserFormDateProvideReturn => {
     });
 
 	const getUserFormDateProvide = useCallback(async () => {
-        console.log('START');
 		try {
             setIsLoading(true);
 			const res = await axios.get<UserFormDataProvide>('http://localhost:50080/api/user_form_data_provide');
-            console.log('data', res.data);
 			setUserFormDateProvide(res.data);
 		} catch (e) {
 			if (axios.isAxiosError(e) && e.response) {

@@ -8,7 +8,6 @@ export const PureCarousel: FC<{ images: string[] }> = ({ images }) => {
 		<HStack alignItems={'stretch'}>
 			<HStack bg="gray.100" w={6} justifyContent="center" cursor={'pointer'} onClick={() => {
 				if (!ref.current) return
-				console.log(ref.current.scrollLeft)
 				ref.current.scrollTo({
 					left: ref.current.scrollLeft - size,
 				})

@@ -4,7 +4,7 @@ export type CreateUserForm =
   Pick<User,
     'name' |
     'email' |
-    'image' |
+    'images' |
     'password' |
     'password_digest' |
     'content' |

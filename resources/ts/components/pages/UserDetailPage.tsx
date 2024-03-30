@@ -7,11 +7,17 @@ import { UserCard } from '../organisms/user/UserCard';
 import { CarouselModal } from '../molecules/CarouselModal';
 import { LoadingPage } from './LoadingPage';
 import { DataNotFound } from './DataNotFound';
+import { DISPLAY_IMAGE_URL } from '../../constants/setting';
 
 export const UserDetailPage = memo(() => {
 	const { id } = useParams();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { getUserById, user, isLoading } = useGetUserById();
+	let filePath = user?.images.map((image) => {
+		return `${DISPLAY_IMAGE_URL}/${image.file_name}`;
+	})
+	filePath = filePath ?? [];
+	console.log(filePath);
 
 	useEffect(() => {
 		getUserById({ id: Number(id) });
@@ -39,8 +45,8 @@ export const UserDetailPage = memo(() => {
 		<Container>
 			<Center p={6}>
 				<Stack spacing={4}>
-					<UserCard id={user.id} name={user.name} userClick={userClick} />
-					<CarouselModal isOpen={isOpen} onClose={onClose} images={['https://picsum.photos/200', 'https://picsum.photos/200']} />
+					<UserCard id={user.id} name={user.name} images={user.images} userClick={userClick} />
+					<CarouselModal isOpen={isOpen} onClose={onClose} images={filePath} />
 					<Box>
 						{user?.content}
 					</Box>

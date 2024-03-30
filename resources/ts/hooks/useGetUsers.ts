@@ -3,23 +3,24 @@ import axios from 'axios';
 
 import { type User } from '../types/api/user';
 import { useShowToastMessage } from './useShowToastMessage';
+import { type UserReturn } from '../types/api/userReturn';
 
 interface UseGetUsersReturn {
   getUsers: () => Promise<void>
-  users: User[]
+  users: UserReturn[]
   isLoading: boolean
 }
 
 export const useGetUsers = (): UseGetUsersReturn => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<UserReturn[]>([]);
   const [showToast] = useShowToastMessage();
   const getUsers = useCallback(async () => {
     try {
       setIsLoading(true);
 
       const url = `${import.meta.env.VITE_API_BASE_URI}/users`;
-      const res = await axios.get<User[]>(url);
+      const res = await axios.get<UserReturn[]>(url);
       setUsers(res.data);
     } catch (e) {
       if (axios.isAxiosError(e) && e.response) {

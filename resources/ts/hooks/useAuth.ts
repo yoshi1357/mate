@@ -29,7 +29,6 @@ export const useAuth = (): Type => {
           email,
           password,
       }, { withCredentials: true });
-      console.log(response.data);
       if (response.data.user.admin === Number(import.meta.env.VITE_USER_ADMIN)) {
         setCookie(AUTHORITY, ADMIN, { maxAge: MAX_AGE })
       } else {

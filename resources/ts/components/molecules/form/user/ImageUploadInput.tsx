@@ -18,7 +18,7 @@ interface PhotosUploadProps {
 
 export const PhotosUpload: React.FC<PhotosUploadProps> = ({ photos, setPhotos }) => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    if (!event.target.files) return;
+    // if (!event.target.files) return;
 
     const newFiles = Array.from(event.target.files);
     const allFiles = [...photos, ...newFiles].slice(0, 3); // 保持するファイル数を最大3に制限
@@ -33,7 +33,7 @@ export const PhotosUpload: React.FC<PhotosUploadProps> = ({ photos, setPhotos })
   return (
     <VStack>
       {photos.map((photo, index) => (
-        <Box key={index} position="relative" width="100px" height="100px">
+        <Box key={index} position="relative" width="200px" height="200px">
           <Image
             src={URL.createObjectURL(photo)}
             alt={`アップロードされた画像 ${index + 1}`}

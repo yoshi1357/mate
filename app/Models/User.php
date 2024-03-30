@@ -66,6 +66,11 @@ class User extends Authenticatable
         'password_digest' => 'hashed',
     ];
 
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
     public function getDisplaySexAttribute()
     {
         $sex_value = $this->sex;

@@ -17,11 +17,12 @@ import { type User } from '../../types/api/user';
 import { UserCard } from '../organisms/user/UserCard';
 import { useNavigate } from 'react-router-dom';
 import { DataNotFound } from '../pages/DataNotFound';
+import { type UserReturn } from '../../types/api/userReturn';
 
 interface Props {
 	isOpen: boolean
 	onClose: () => void
-	user: User | null
+	user: UserReturn | null
 }
 
 export const UserModal: FC<Props> = memo((props: Props) => {
@@ -43,7 +44,7 @@ export const UserModal: FC<Props> = memo((props: Props) => {
 								user ? (
 									<Stack spacing={4} textAlign="center">
 										<Center>
-											<UserCard id={user?.id} name={user?.name} userClick={() => userClick(user?.id)} />
+											<UserCard id={user?.id} name={user?.name} images={user?.images} userClick={() => userClick(user?.id)} />
 										</Center>
 										<Box>
 											メールアドレス: {user?.email}

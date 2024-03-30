@@ -29,6 +29,7 @@ export const UserIndexPage: FC = memo(function UserIndexPage () {
           <UserCard
             id={user.id}
             name={user.name}
+            images={user.images}
             userClick={userClick}
           />
         </WrapItem>

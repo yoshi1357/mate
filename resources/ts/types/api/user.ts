@@ -2,7 +2,7 @@ export interface User {
   id: number
   name: string
   email: string
-  image: string
+  images: File[]
   remember_digest?: string | null
   password: string
   password_digest: string

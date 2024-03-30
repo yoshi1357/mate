@@ -20,7 +20,7 @@ export const useCreateUser = (): useCreateUserReturn => {
 		const {
 			name,
 			email,
-			image,
+			images,
 			password,
 			password_digest,
 			content,
@@ -36,24 +36,36 @@ export const useCreateUser = (): useCreateUserReturn => {
 		} = props;
 		setIsLoading(true)
 		try {
-			const res = await axios.post<User>(`${import.meta.env.VITE_API_BASE_URI}/users`, {
-				name,
-				email,
-				image,
-				password,
-				password_digest,
-				content,
-				age,
-				sex,
-				blood_type,
-				height,
-				body_shape,
-				residence,
-				birth_place,
-				holiday,
-				work,
-			}, { withCredentials: true });
-			console.log()
+			const formData = new FormData();
+			// 文字列や数値のデータをFormDataに追加
+			formData.append('name', props.name);
+			formData.append('email', props.email);
+			formData.append('password', props.password);
+			formData.append('password_digest', props.password_digest);
+			formData.append('content', props.content);
+			formData.append('age', props.age.toString());
+			formData.append('sex', props.sex.toString());
+			formData.append('blood_type', props.blood_type.toString());
+			formData.append('height', props.height.toString());
+			formData.append('body_shape', props.body_shape.toString());
+			formData.append('residence', props.residence.toString());
+			formData.append('birth_place', props.birth_place.toString());
+			formData.append('holiday', props.holiday.toString());
+			formData.append('work', props.work.toString());
+
+			// File[]型の画像データをFormDataに追加
+			props.images.forEach((file, index) => {
+				formData.append(`image[${index}]`, file);
+			});
+
+			const res = await axios.post<User>(`${import.meta.env.VITE_API_BASE_URI}/users`,
+			formData,
+			{
+				withCredentials: true,
+				headers: {
+					'Content-Type': 'multipart/form-data'
+				},
+			});
 			if (res.data) {
 				navigate('/');
 				showMessage({ title: '会員作成が完了しました！', status: 'success' });

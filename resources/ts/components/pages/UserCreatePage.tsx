@@ -36,10 +36,7 @@ export const UserCreatePage: FC = memo(() => {
 	}, [getUserFormDateProvide]);
 	const onSubmit = methods.handleSubmit((userCreateFormData) => {
 		// 画像データを追加
-		// photos.forEach((photoData) => {
-		// 	userCreateFormData.image = 'sample.jpg';
-		// });
-		userCreateFormData.image = 'sample.jpg';
+		userCreateFormData.images = photos;
 		console.log(userCreateFormData);
 		createUser(userCreateFormData);
 	});
