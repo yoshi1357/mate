@@ -1,4 +1,4 @@
 export interface UserImage {
-    file_name: string
+    path: string
     user_id: number
 }

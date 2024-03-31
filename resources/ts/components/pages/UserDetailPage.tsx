@@ -14,10 +14,9 @@ export const UserDetailPage = memo(() => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { getUserById, user, isLoading } = useGetUserById();
 	let filePath = user?.images.map((image) => {
-		return `${DISPLAY_IMAGE_URL}/${image.file_name}`;
+		return `${import.meta.env.VITE_WEB_BASE_URI}${image.path}`;
 	})
 	filePath = filePath ?? [];
-	console.log(filePath);
 
 	useEffect(() => {
 		getUserById({ id: Number(id) });

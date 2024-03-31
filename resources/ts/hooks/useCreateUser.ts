@@ -55,7 +55,7 @@ export const useCreateUser = (): useCreateUserReturn => {
 
 			// File[]型の画像データをFormDataに追加
 			props.images.forEach((file, index) => {
-				formData.append(`image[${index}]`, file);
+				formData.append(`images[${index}]`, file);
 			});
 
 			const res = await axios.post<User>(`${import.meta.env.VITE_API_BASE_URI}/users`,

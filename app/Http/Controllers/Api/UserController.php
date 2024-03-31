@@ -16,14 +16,16 @@ class UserController extends Controller
     // ユーザー一覧を取得
     public function index()
     {
-        $users = User::with('images:file_name,user_id')->get();
+        $users = User::with('images:path,user_id')->get();
         return response()->json($users);
     }
 
     // 新しいユーザーを作成
     public function store(Request $request)
     {
-        $user = User::create($request->all());
+        $data = $request->except('images');
+        Log::debug($data);
+        $user = User::create($data);
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
@@ -54,7 +56,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::with(['images' => function ($query) {
-            $query->select('user_id', 'file_name');
+            $query->select('user_id', 'path');
         }])->findOrFail($id);
 
         $userData = $user->toArray();
