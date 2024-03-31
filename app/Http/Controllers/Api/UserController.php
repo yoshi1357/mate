@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Const\ApiReturnImageColumnsConst;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\User;
@@ -16,7 +17,8 @@ class UserController extends Controller
     // ユーザー一覧を取得
     public function index()
     {
-        $users = User::with('images:path,user_id')->get();
+        $get_image_columns_string = join(',', ApiReturnImageColumnsConst::COLUMNS);
+        $users = User::with("images:{$get_image_columns_string}")->get();
         return response()->json($users);
     }
 
@@ -24,11 +26,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('images');
-        Log::debug($data);
         $user = User::create($data);
 
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
+            foreach ($request->file('images') as $index => $image) {
+                $is_main = false;
+                if ($index === 0) {
+                    $is_main = true;
+                }
                 $file_name = $image->getClientOriginalName();
                 $path = $image->store('public/images');
                 $url = Storage::url($path);
@@ -36,7 +41,8 @@ class UserController extends Controller
                 Image::create([
                     'file_name' => $file_name,
                     'path' => $url,
-                    'user_id' => $user->id
+                    'user_id' => $user->id,
+                    'is_main' => $is_main,
                 ]);
             }
         } else {
@@ -56,7 +62,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::with(['images' => function ($query) {
-            $query->select('user_id', 'path');
+            $query->select(...ApiReturnImageColumnsConst::COLUMNS);
         }])->findOrFail($id);
 
         $userData = $user->toArray();

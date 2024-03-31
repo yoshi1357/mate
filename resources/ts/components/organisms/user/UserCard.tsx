@@ -11,12 +11,12 @@ interface Props {
 
 export const UserCard = memo((props: Props) => {
   const { id, name, images, userClick } = props;
-  const mainImagePath = images[0].path
+  const mainImage = images.find((image) => image.is_main)
   return (
     <Box w="250px" h="250px" bg="white" borderRadius="10px" shadow="md" p={4}>
       <Stack textAlign="center">
         <Image
-          src={`${import.meta.env.VITE_WEB_BASE_URI}${mainImagePath}`}
+          src={`${import.meta.env.VITE_WEB_BASE_URI}${mainImage?.path}`}
           boxSize="160px"
           m="auto"
           borderRadius="full"

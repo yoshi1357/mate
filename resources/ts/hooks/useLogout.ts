@@ -4,14 +4,14 @@ import { type User } from '../types/api/user';
 import { useNavigate } from 'react-router-dom';
 import { useMessage } from './useMessage';
 import { useCookies } from 'react-cookie'
-import { AUTHORITY } from '../constants/setting';
+import { AUTHORITY, GENERAL } from '../constants/setting';
 
 interface ReturnUseLogout {
     logout: () => Promise<void>
 }
 
 export const useLogout = (): ReturnUseLogout => {
-    const [cookies, setCookie, removeCookie] = useCookies([AUTHORITY]);
+    const [cookies, setCookie, removeCookie] = useCookies(['']);
     const navigate = useNavigate();
     const { showMessage } = useMessage();
 
@@ -19,7 +19,7 @@ export const useLogout = (): ReturnUseLogout => {
     try {
         const response = await axios.post(`${import.meta.env.VITE_WEB_BASE_URI}/logout`, {},
         { withCredentials: true });
-        removeCookie(AUTHORITY)
+        setCookie(AUTHORITY, GENERAL);
         navigate('/');
         showMessage({ title: 'ログアウトしました', status: 'success' });
     } catch (e) {
