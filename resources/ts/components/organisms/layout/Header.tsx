@@ -8,8 +8,11 @@ import { MenuDrawer } from '../../molecules/MenuDrawer';
 import { links } from '../../../parts/Links'
 import { useLogout } from '../../../hooks/useLogout'
 import { AUTHORITY, GENERAL } from '../../../constants/setting'
+import { userIdState } from '../../../recoil/atom'
+import { useRecoilValue } from 'recoil';
 
 export const Header: FC = memo(function Header () {
+  const userId = useRecoilValue(userIdState);
   const [cookies] = useCookies([AUTHORITY]);
   const navigation = useNavigate();
   const { logout } = useLogout();
@@ -54,11 +57,12 @@ export const Header: FC = memo(function Header () {
               <Link onClick={() => navigation(link.path)}>{link.text}</Link>
             </Box>
           ))}
-          {isLogin && (
-            <Box pr={4} mr={4}>
-              <Button onClick={onClickLogout}>ログアウト</Button>
-            </Box>
-          )}
+          <Box pr={4} mr={4}>
+            <Link onClick={() => navigation(`users/${userId}/edit`)}>マイページ</Link>
+          </Box>
+          <Box pr={4} mr={4}>
+            <Button onClick={onClickLogout}>ログアウト</Button>
+          </Box>
         </Flex>
         <MenuIconButton onOpen={onOpen} />
       </Flex>
@@ -66,6 +70,7 @@ export const Header: FC = memo(function Header () {
         isOpen={isOpen}
         onClose={onClose}
         links={links}
+        userId={userId}
         isLogin={isLogin}
         doLogout={onClickLogout}
       />

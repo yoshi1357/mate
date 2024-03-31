@@ -2,10 +2,12 @@ import { useState, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
+import { useSetRecoilState } from 'recoil';
 
 import { type User } from '../types/api/user';
 import { useMessage } from './useMessage';
-import { MAX_AGE, ADMIN, LOGIN, AUTHORITY } from '../constants/setting';
+import { MAX_AGE, ADMIN, LOGIN, AUTHORITY, ADMIN_USER_NUMBER } from '../constants/setting';
+import { userIdState } from '../recoil/atom';
 
 interface Type {
   login: (email: string, password: string) => void
@@ -21,6 +23,7 @@ export const useAuth = (): Type => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { showMessage } = useMessage();
+  const setUserId = useSetRecoilState(userIdState);
 
   const login = useCallback(async (email: string, password: string) => {
     setLoading(true);
@@ -29,11 +32,15 @@ export const useAuth = (): Type => {
           email,
           password,
       }, { withCredentials: true });
-      if (response.data.user.admin === Number(import.meta.env.VITE_USER_ADMIN)) {
-        setCookie(AUTHORITY, ADMIN, { maxAge: MAX_AGE })
+      // フロント認証用のcookieをセット
+      if (response.data.user.admin === ADMIN_USER_NUMBER) {
+        setCookie(AUTHORITY, ADMIN, { maxAge: MAX_AGE, path: '/' })
       } else {
-        setCookie(AUTHORITY, LOGIN, { maxAge: MAX_AGE })
+        setCookie(AUTHORITY, LOGIN, { maxAge: MAX_AGE, path: '/' })
       }
+      // ログインユーザーのIDをグローバルにセット
+      setUserId(response.data.user.id)
+
       navigate('/users');
       showMessage({ title: 'ログインしました', status: 'success' });
     } catch (e) {

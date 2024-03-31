@@ -1,7 +1,7 @@
 import React, { memo, type FC } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { LoginPage } from '../components/pages/LoginPage'
-import { MyPage } from '../components/pages/MyPage'
+import { UserEditPage } from '../components/pages/UserEditPage'
 import { UserIndexPage } from '../components/pages/UserIndexPage'
 import { CommunityIndexPage } from '../components/pages/CommunityIndexPage'
 import { MatchedPage } from '../components/pages/MatchedPage'
@@ -31,11 +31,11 @@ export const Router: FC = memo(function Router () {
                   <Route path="/users">
                     <Route index={true} element={<UserIndexPage />} />
                     <Route path=":id" element={<UserDetailPage />} />
+                    <Route path=":id/edit" element={<UserEditPage />} />
                   </Route>
                   <Route path="/communities" element={<CommunityIndexPage />} />
                   <Route path="/matched" element={<MatchedPage />} />
                   <Route path="/compatibility_test" element={<CompatibilityTestPage />} />
-                  <Route path="/mypage" element={<MyPage />} />
               </Route>
             </Route>
             <Route path="*" element={<NotFound />} />

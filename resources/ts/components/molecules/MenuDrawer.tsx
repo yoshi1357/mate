@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { type Link } from '../../types/parts/link'
+import { type Link as LinkType } from '../../types/parts/link'
 import { useNavigate } from 'react-router-dom';
 import {
   Button,
@@ -12,8 +12,8 @@ import {
 interface Props {
   isOpen: boolean
   onClose: () => void
-  links: Link[]
-  isLogin: boolean
+  links: LinkType[]
+  userId: number
   doLogout: () => void
 }
 
@@ -23,7 +23,7 @@ export const MenuDrawer = memo((props: Props) => {
     isOpen,
     onClose,
     links,
-    isLogin,
+    userId,
     doLogout
   } = props;
   return (
@@ -36,11 +36,12 @@ export const MenuDrawer = memo((props: Props) => {
               {link.text}
             </Button>
           ))}
-          {isLogin && (
-            <Button w="100%" onClick={doLogout}>
-              ログアウト
-            </Button>
-          )}
+          <Button w="100%" onClick={() => navigation(`users/${userId}/edit`)}>
+            マイページ
+          </Button>
+          <Button w="100%" onClick={doLogout}>
+            ログアウト
+          </Button>
         </DrawerBody>
       </DrawerContent>
     </Drawer>

@@ -40,8 +40,8 @@ export const LoginPage: FC = memo(function LoginPage () {
 
   useEffect(() => {
     // 認証情報がセットされていなければ一般ユーザーとしてセットする
-    if (!cookies[AUTHORITY]) {
-      setCookie(AUTHORITY, GENERAL);
+    if (cookies[AUTHORITY] !== undefined) {
+      setCookie(AUTHORITY, GENERAL, { path: '/' });
     }
   }, [])
 

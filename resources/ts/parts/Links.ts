@@ -21,8 +21,4 @@ export const links: Link[] = [
 		path: 'compatibility_test',
 		text: '相性診断'
 	},
-	{
-		path: 'mypage',
-		text: 'マイページ'
-	},
 ];
