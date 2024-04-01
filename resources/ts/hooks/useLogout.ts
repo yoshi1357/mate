@@ -8,7 +8,6 @@ import { useMessage } from './useMessage';
 import { AUTHORITY, GENERAL } from '../constants/setting';
 import { userIdState } from '../recoil/atom';
 
-
 interface ReturnUseLogout {
     logout: () => Promise<void>
 }
