@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 
 import { type User } from '../types/api/user';
 import { useMessage } from './useMessage';
@@ -39,7 +39,7 @@ export const useAuth = (): Type => {
         setCookie(AUTHORITY, LOGIN, { maxAge: MAX_AGE, path: '/' })
       }
       // ログインユーザーのIDをグローバルにセット
-      setUserId(response.data.user.id)
+      setUserId(response.data.user.id);
 
       navigate('/users');
       showMessage({ title: 'ログインしました', status: 'success' });

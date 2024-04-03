@@ -1,5 +1,7 @@
 import { type FC, memo, useEffect, useCallback } from 'react'
 import { Wrap, WrapItem, useDisclosure } from '@chakra-ui/react';
+import { useRecoilValue } from 'recoil';
+import { userIdState } from '../../recoil/atom'
 
 import { UserCard } from '../organisms/user/UserCard'
 import { UserModal } from '../molecules/UserModal';
@@ -11,6 +13,9 @@ export const UserIndexPage: FC = memo(function UserIndexPage () {
   const { users, getUsers, isLoading } = useGetUsers();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { selectedUser, onSelectedUser } = useSelectUser();
+
+  const userId = useRecoilValue(userIdState);
+  console.log('test', userId);
 
   useEffect(() => {
     getUsers();

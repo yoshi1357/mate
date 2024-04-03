@@ -13,6 +13,7 @@ import { UserCreatePage } from '../components/pages/UserCreatePage'
 import { PublicLayout } from '../components/templates/PublicLayout'
 import { PrivateLayout } from '../components/templates/PrivateLayout'
 import { GeneralLayout } from '../components/templates/GeneralLayout'
+import { OnlyMeLayout } from '../components/templates/OnlyMeLayout'
 
 export const Router: FC = memo(function Router () {
   return (
@@ -31,7 +32,9 @@ export const Router: FC = memo(function Router () {
                   <Route path="/users">
                     <Route index={true} element={<UserIndexPage />} />
                     <Route path=":id" element={<UserDetailPage />} />
-                    <Route path=":id/edit" element={<UserEditPage />} />
+                    <Route element={<OnlyMeLayout />}>
+                      <Route path=":id/edit" element={<UserEditPage />} />
+                    </Route>
                   </Route>
                   <Route path="/communities" element={<CommunityIndexPage />} />
                   <Route path="/matched" element={<MatchedPage />} />
